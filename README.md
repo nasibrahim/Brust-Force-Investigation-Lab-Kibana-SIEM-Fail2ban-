@@ -1,78 +1,79 @@
-Brute Force Investigation Lab (Kibana SIEM + Fail2ban)
+SSH Brute-Force Detection & Mitigation Using Kibana SIEM and Fail2ban
+
 Overview
 
-This project demonstrates a basic SOC workflow using Kibana SIEM and Fail2ban to detect and respond to brute-force SSH login attempts on an Ubuntu Linux server.
+This project demonstrates the detection, investigation, and automated mitigation of SSH brute-force activity within an Ubuntu Linux environment using Kibana SIEM and Fail2ban.
 
-The lab simulates repeated failed SSH authentication attempts and shows how security logs can be monitored, visualized, and automatically acted upon.
+The environment was configured to monitor Linux authentication events, visualize suspicious login activity, and automatically respond to repeated authentication failures.
 
-Objectives
+---
 
-Simulate SSH brute-force login attempts
-Collect and monitor Linux authentication logs
-Visualize attack activity in Kibana
-Configure Fail2ban to automatically block malicious IPs
-Perform basic incident investigation and reporting
+Security Investigation Summary
+
+During monitoring activities, Kibana SIEM identified multiple failed SSH authentication attempts targeting the server.
+
+Key Findings
+
+- 10 failed SSH login attempts detected through Kibana dashboards
+- Authentication logs revealed repeated access attempts against the SSH service
+- Attack activity originated from a single IP source
+- Fail2ban automatically banned the offending IP after exceeding the configured failure threshold
+
+---
 
 Technologies Used
-Ubuntu Linux
+
+- Ubuntu Linux
+- Elastic Stack (ELK)
+- Kibana SIEM
+- Fail2ban
+- SSH
+- Linux Authentication Logs
+
+---
+
+Detection & Response Workflow
+
+. SSH authentication failures generated security events
+. Ubuntu system logs recorded the failed login attempts
+. Logs were ingested into Kibana SIEM
+. Kibana visualized authentication failure patterns and event counts
+. Fail2ban continuously monitored authentication logs
+. Automatic IP blocking was triggered after repeated failed attempts
+
+---
+
+Investigation Results
+
 Kibana SIEM
-Elastic Stack (ELK)
+
+- Visualized authentication failure trends
+- Displayed event distribution for failed SSH logins
+- Enabled centralized monitoring and investigation of security events
+
 Fail2ban
-SSH
-Linux Authentication Logs
 
-Lab Workflow:
+- Detected repeated failed login attempts
+- Automatically banned the suspicious IP address
+- Reduced exposure to continued brute-force activity
 
-Generate failed SSH login attempts
-Ubuntu logs authentication failures
-Logs are ingested into Kibana
-Kibana visualizes brute-force activity
-Fail2ban detects repeated failures
-Malicious IP is automatically banned
+---
 
-Detection Results
+Security Outcome
 
-Kibana Dashboard Findings
-Multiple failed login attempts detected
-Authentication failure patterns visualized
-Event counts displayed through Kibana charts
-Fail2ban Response
-Suspicious IP automatically banned
-SSH protection successfully triggered
-Real-time defensive response implemented
-Sample Fail2ban Output
-sudo fail2ban-client status sshd
+The environment successfully demonstrated:
 
-Output:
+- Centralized log monitoring
+- Authentication event analysis
+- Brute-force detection
+- Automated incident response
+- Linux security monitoring
 
- Status for the jail: sshd
- Currently failed: 0
- Total failed: 5
- Currently banned: 1
- Total banned: 1
- Banned IP list: 192.169.10.1
+The integration of Kibana SIEM and Fail2ban provided both visibility and active mitigation against suspicious SSH authentication activity.
 
-Security Analysis
+---
 
-The attack pattern showed repeated failed login attempts targeting SSH services. Kibana SIEM successfully detected the abnormal activity through log monitoring and visualization, while Fail2ban mitigated the threat by banning the offending IP address automatically.
-
-This project demonstrates:
-
-Threat detection
-Security monitoring
-Automated response
-Basic SOC investigation workflow
-
-Skills Demonstrated:
-
-SIEM Monitoring
-Log Analysis
-Linux Security
-Threat Detection
-Incident Investigation
-Security Automation
-Blue Team Operations
-
+Author
 
 Nasiru Ibrahim
-Aspiring SOC Analyst | Cybersecurity Enthusiast | SIEM & Linux Security Learner
+SOC Analyst | Cybersecurity Enthusiast | SIEM & Linux Security Operation
